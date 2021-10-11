@@ -45,6 +45,10 @@ public abstract class Servicio{
 	protected void aumentaMes(){
 	    this.meses++;
 	}
+
+	@Override public String toString(){
+	    return "(" + this.persona.nombre + ", Contrato:" + this.contrato + ", Meses:" + this.meses + ")"; 
+	}
 	
 	
     }// Fin de cliente
@@ -67,6 +71,13 @@ public abstract class Servicio{
 	return this.toString().equals(s.toString());
     }
 
+    public void mostrarClientesActivos(){
+	System.out.println(this.clientesActivos);
+    }
+
+    public void mostrarExClientes(){
+	System.out.println(this.exClientes);
+    }
 
     protected abstract void cobrar(Cliente c);
 

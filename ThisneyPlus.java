@@ -17,7 +17,29 @@ public class ThisneyPlus extends Servicio implements Sujeto{
     ////FALTA IMPLEMENTAR//////////////////////////
     ///////////////////////////////////////////////
     @Override protected void cobrar(Cliente cliente){
-	return;
+	ContratoThisney contratoAUsar;
+	if(cliente.meses <= 3 ){
+	    contratoAUsar = checarContrato(1);
+	    contratoAUSar.realizarCobro(cliente.persona);
+	    return;
+	}else{
+	    contratoAUsar = checarContrato(2);
+	    contratoAUsar.realizarCobro(cliente.persona);
+	}
+    }
+
+    protected ContratoThisney checarContrato(int i){
+	contratoThisney contrato;
+	switch(i){
+	case 1: contrato = new ContratoInicial();
+	    break;
+	case 2: contrato = new ContratoVeterano();
+	    break;
+	default: contrato = new ContratoVeterano();
+	    break;
+	}
+	return contrato;
+	
     }
 
     ///////////////////////////////////////////////
@@ -45,6 +67,7 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	}
     }
 
+    
     
 
     
