@@ -46,13 +46,25 @@ public abstract class Servicio{
 	    this.meses++;
 	}
 
+	protected boolean esLaPersona(Persona p){
+	    if(this.persona.equals(p) ) return true;
+	    return false;
+	}
+
 	@Override public String toString(){
 	    return "(" + this.persona.nombre + ", Contrato:" + this.contrato + ", Meses:" + this.meses + ")"; 
 	}
 	
+	@Override public boolean equals(Object objeto){
+	    if (objeto == null || getClass() != objeto.getClass())
+		return false;
+	    @SuppressWarnings("unchecked") Cliente c = (Cliente)objeto;
+	    return this.persona.equals(c.persona);
+	}
+	
 	
     }// Fin de cliente
-
+    
     /* Lista de clientes activos */
     ArrayList<Cliente> clientesActivos;
     ArrayList<Cliente> exClientes;

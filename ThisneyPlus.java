@@ -17,19 +17,19 @@ public class ThisneyPlus extends Servicio implements Sujeto{
     ////FALTA IMPLEMENTAR//////////////////////////
     ///////////////////////////////////////////////
     @Override protected void cobrar(Cliente cliente){
-	ContratoThisney contratoAUsar;
+	ContratoThisney contrato;
 	if(cliente.meses <= 3 ){
-	    contratoAUsar = checarContrato(1);
-	    contratoAUSar.realizarCobro(cliente.persona);
+	    contrato = this.checarContrato(1);
+	    contrato.realizarCobro(cliente.persona);
 	    return;
 	}else{
-	    contratoAUsar = checarContrato(2);
-	    contratoAUsar.realizarCobro(cliente.persona);
+	    contrato = checarContrato(2);
+	    contrato.realizarCobro(cliente.persona);
 	}
     }
 
     protected ContratoThisney checarContrato(int i){
-	contratoThisney contrato;
+	ContratoThisney contrato;
 	switch(i){
 	case 1: contrato = new ContratoInicial();
 	    break;
@@ -55,15 +55,28 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	    return;
 	}
 	Cliente clienteNuevo = new Cliente(persona, contrato);
-	this.clientesActivos.add(clienteNuevo);
+	if(this.clientesActivos.contains(clienteNuevo)) return;
+	if(this.exClientes.contains(clienteNuevo)){
+	    int indice = this.exClientes.indexOf(clienteNuevo);
+	    Cliente excliente = this.exClientes.get(indice);
+	    this.exClientes.remove(excliente);
+	    this.clientesActivos.add(excliente);
+	}else{
+	    this.clientesActivos.add(clienteNuevo);
+	}
     }
 
     @Override public void remueve(Persona persona){
+	Cliente dadoDeBaja = null;
 	for(Cliente cliente : this.clientesActivos){
-	    if(cliente.persona == persona){
-		this.exClientes.add(cliente);
-		this.clientesActivos.remove(cliente);
+	    if(cliente.persona.equals(persona)){
+		dadoDeBaja = cliente;
+		break;
 	    }
+	}
+	if(dadoDeBaja != null){
+	    this.clientesActivos.remove(dadoDeBaja);
+	    this.exClientes.add(dadoDeBaja);
 	}
     }
 
