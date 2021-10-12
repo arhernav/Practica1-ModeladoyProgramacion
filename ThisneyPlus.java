@@ -13,40 +13,33 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	this.exClientes = new ArrayList<Cliente>();
     }
 
-    ///////////////////////////////////////////////
-    ////FALTA IMPLEMENTAR//////////////////////////
-    ///////////////////////////////////////////////
+    /**
+     * Metodo que realiza el cobro del servicio a un cliente dado.
+     * Este metodo recibe un cliente al que se le va a cobra, checa el tipo de contrato que tiene y lo utiliza para realizar el cobro en si
+     * @param Cliente Cliente al que se le hace el cobro
+     */
     @Override protected void cobrar(Cliente cliente){
-	ContratoThisney contrato;
-	if(cliente.meses <= 3 ){
-	    contrato = this.checarContrato(1);
-	    contrato.realizarCobro(cliente.persona);
-	    return;
-	}else{
-	    contrato = checarContrato(2);
-	    contrato.realizarCobro(cliente.persona);
-	}
+	ContratoThisney contrato = this.checarContrato(cliente);
+	contrato.realizarCobro(cliente.persona);
     }
 
-    protected ContratoThisney checarContrato(int i){
-	ContratoThisney contrato;
-	switch(i){
-	case 1: contrato = new ContratoInicial();
-	    break;
-	case 2: contrato = new ContratoVeterano();
-	    break;
-	default: contrato = new ContratoVeterano();
-	    break;
-	}
-	return contrato;
+    protected ContratoThisney checarContrato(Cliente cliente){
+	if(cliente.meses <= 3) return new ContratoInicial();
+	return new ContratoVeterano();
 	
     }
 
-    ///////////////////////////////////////////////
-    ////FALTA IMPLEMENTAR//////////////////////////
-    ///////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    /////////////////////Falta implementar parte del metodo/////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Realiza el cobro de su contrato a todos los clientes suscritos y envia una recomendacion de pelicula/serie a cada uno de ellos
+     */
     @Override public void notifica(){
-	return;
+	this.actualizaMesesClientes();
+	for(Cliente cliente: this.clientesActivos){
+	    this.cobrar(cliente);
+	}
     }
     
     @Override public void agrega(Persona persona, int contrato){

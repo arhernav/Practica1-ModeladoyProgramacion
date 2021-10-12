@@ -4,38 +4,44 @@ public class Main{
 
 	ThisneyPlus thisney = new ThisneyPlus();
 	Persona alicia = new Persona("alicia ", 1000);
+	thisney.agrega(alicia, 1);
+	thisney.mostrarClientesActivos();
+
+	System.out.println();
+	System.out.println("mes 1");
+	thisney.mostrarClientesActivos();
 	System.out.println(alicia);
-	thisney.agrega(alicia, 1);
-	thisney.actualizaMesesClientes();
-	thisney.actualizaMesesClientes();
-	thisney.actualizaMesesClientes();
-	System.out.println("Clientes activos antes de eliminar");
+	thisney.notifica();
+	System.out.println("realizamos el cobro");
 	thisney.mostrarClientesActivos();
+	System.out.println(alicia);
+
 	System.out.println();
-	System.out.println("exclientes antes de eliminar");
-	thisney.mostrarExClientes();
-	System.out.println();
-	System.out.println();
-	thisney.agrega(alicia, 1);
-	System.out.println("Clientes activos tras tratar de agregar otra vez");
+	System.out.println("mes 2");
 	thisney.mostrarClientesActivos();
-	System.out.println("exClientes activos tras tratar de agregar otra vez");
-	thisney.mostrarExClientes();
-	System.out.println();
-	System.out.println();
-	thisney.remueve(alicia);
-	System.out.println("Clientes activos despues de eliminar");
+	System.out.println(alicia);
+	thisney.notifica();
+	System.out.println("realizamos el cobro");
 	thisney.mostrarClientesActivos();
-	System.out.println("exclientes despues de eliminar");
-	thisney.mostrarExClientes();
+	System.out.println(alicia);
+
 	System.out.println();
-	System.out.println();
-	thisney.agrega(alicia, 1);
-	System.out.println("Clientes activos tras tratar de agregar otra vez");
+	System.out.println("mes 3");
 	thisney.mostrarClientesActivos();
-	System.out.println("exClientes activos tras tratar de agregar otra vez");
-	thisney.mostrarExClientes();
-	
+	System.out.println(alicia);
+	thisney.notifica();
+	System.out.println("realizamos el cobro");
+	thisney.mostrarClientesActivos();
+	System.out.println(alicia);
+
+	System.out.println();
+	System.out.println("mes 4");
+	thisney.mostrarClientesActivos();
+	System.out.println(alicia);
+	thisney.notifica();
+	System.out.println("realizamos el cobro");
+	thisney.mostrarClientesActivos();
+	System.out.println(alicia);
     }
     
 }
