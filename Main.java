@@ -2,11 +2,11 @@
 public class Main{
     public static void main(String[] args){
 
-	ThisneyPlus thisney = new ThisneyPlus();
+	Memeflix thisney = new Memeflix();
 	Persona alicia = new Persona("alicia ", 1000);
 	Persona jake = new Persona("jake",  300);
-	thisney.agrega(alicia, 1);
-	thisney.agrega(jake, 1);
+	thisney.agrega(alicia, 2);
+	thisney.agrega(jake, 3);
 	thisney.mostrarClientesActivos();
 
 	System.out.println();
