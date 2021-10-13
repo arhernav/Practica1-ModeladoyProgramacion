@@ -20,7 +20,11 @@ public class ThisneyPlus extends Servicio implements Sujeto{
      */
     @Override protected void cobrar(Cliente cliente){
 	ContratoThisney contrato = this.checarContrato(cliente);
-	contrato.realizarCobro(cliente.persona);
+	if(cliente.persona.cuenta.dinero - contrato.conocerMonto() < 0){
+	    this.exClientes.add(cliente);
+	}else{
+	    contrato.realizarCobro(cliente.persona);
+	}	
     }
 
     protected ContratoThisney checarContrato(Cliente cliente){
@@ -37,8 +41,12 @@ public class ThisneyPlus extends Servicio implements Sujeto{
      */
     @Override public void notifica(){
 	this.actualizaMesesClientes();
+	//Para cada cliente, si puede hacer el cobro, lo realiza, si no, lo agrega a exclientes
 	for(Cliente cliente: this.clientesActivos){
 	    this.cobrar(cliente);
+	}
+	for(Cliente cliente: this.exClientes){
+	    if(this.clientesActivos.contains(cliente)) this.clientesActivos.remove(cliente);
 	}
     }
     
@@ -70,6 +78,7 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	if(dadoDeBaja != null){
 	    this.clientesActivos.remove(dadoDeBaja);
 	    this.exClientes.add(dadoDeBaja);
+	    System.out.println("Lamentamos que dejes el  servicio" + dadoDeBaja.persona.nombre);
 	}
     }
 

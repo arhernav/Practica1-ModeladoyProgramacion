@@ -22,6 +22,7 @@ public class Main{
 	System.out.println(alicia);
 	System.out.println(jake);
 
+	
 	System.out.println();
 	System.out.println("mes 2");
 	thisney.mostrarClientesActivos();
@@ -37,7 +38,6 @@ public class Main{
 
 	System.out.println();
 	System.out.println("mes 3");
-	thisney.remueve(jake);
 	thisney.mostrarClientesActivos();
 	thisney.mostrarExClientes();
 	System.out.println(alicia);
@@ -64,7 +64,6 @@ public class Main{
 
 	System.out.println();
 	System.out.println("mes 5");
-	thisney.agrega(jake, 1);
 	thisney.mostrarClientesActivos();
 	thisney.mostrarExClientes();
 	System.out.println(alicia);
@@ -75,6 +74,20 @@ public class Main{
 	thisney.mostrarExClientes();
 	System.out.println(alicia);
 	System.out.println(jake);
+
+	System.out.println();
+	System.out.println("mes 6");
+	thisney.mostrarClientesActivos();
+	thisney.mostrarExClientes();
+	System.out.println(alicia);
+	System.out.println(jake);
+	thisney.notifica();
+	System.out.println("realizamos el cobro");
+	thisney.mostrarClientesActivos();
+	thisney.mostrarExClientes();
+	System.out.println(alicia);
+	System.out.println(jake);
+	
     }
     
 }
