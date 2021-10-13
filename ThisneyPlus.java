@@ -22,6 +22,7 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	ContratoThisney contrato = this.checarContrato(cliente);
 	if(cliente.persona.cuenta.dinero - contrato.conocerMonto() < 0){
 	    this.exClientes.add(cliente);
+	    System.out.println("Lamentamos que hayas dejado  el serivicio pobre: " + cliente.persona.nombre);
 	}else{
 	    contrato.realizarCobro(cliente.persona);
 	}	
