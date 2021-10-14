@@ -45,10 +45,13 @@ public class Momazon extends Servicio implements Sujeto{
 	ContratoMomazon contrato;
 	switch (cliente.contrato){
 	case 1: contrato = new ContratoMomazonNormal();
+	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio normal de Momazon");
 	    break;
 	case 2: contrato = new ContratoMomazonPremium();
+	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio premium de Momazon ");
 	    break;
 	default: contrato = new ContratoMomazonNormal();
+	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio normal de Momazon");
 	    break;
 	}
 	return contrato;

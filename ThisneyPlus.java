@@ -31,8 +31,14 @@ public class ThisneyPlus extends Servicio implements Sujeto{
     }
 
     protected ContratoThisney checarContrato(Cliente cliente){
-	if(cliente.meses <= 3) return new ContratoInicial();
-	return new ContratoVeterano();
+	ContratoThisney contrato;
+	if(cliente.meses <= 3){
+	    contrato = new ContratoInicial();
+	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio inical de Thiisney");
+	}
+	contrato = new ContratoVeterano(); 
+	System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio normal de Momazon");
+	return contrato;
 	
     }
 

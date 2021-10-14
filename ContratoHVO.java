@@ -7,5 +7,7 @@ public class ContratoHVO implements ContratoHVOMax{
     @Override public int conocerMonto(){
 	return 130;
     }
+
+    
     
 }

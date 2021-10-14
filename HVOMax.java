@@ -42,8 +42,15 @@ public class HVOMax extends Servicio implements Sujeto{
     }
     
     protected ContratoHVOMax checarContrato(Cliente cliente){
-	if(cliente.meses <= 3) return new ContratoHVOPrueba();
-	return new ContratoHVO();
+	ContratoHVOMax contrato;
+	if(cliente.meses <= 3){
+	    contrato = new ContratoHVOPrueba();
+	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por la prueba de HVO Max");
+	    return  Contrato;
+	}
+	contrato = new ContratoHVO();
+	System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio de HVO Max");
+	return contrato;
     }
     
     @Override protected void cobrar(Cliente cliente){

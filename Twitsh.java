@@ -45,10 +45,13 @@ public class Twitsh extends Servicio implements Sujeto{
 	ContratoTwitsh contrato;
 	switch (cliente.contrato){
 	case 1: contrato = new ContratoTwitshNormal();
+	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio de Twitsh");
 	    break;
 	case 2: contrato = new ContratoTwitshPremium();
+	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio premium de Twitsh");
 	    break;
 	default: contrato = new ContratoTwitshPremium();
+	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio premium de Twitsh");
 	    break;
 	}
 	return contrato;
