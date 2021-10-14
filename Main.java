@@ -2,7 +2,7 @@
 public class Main{
     public static void main(String[] args){
 
-	Twitsh thisney = new Twitsh();
+	HVOMax thisney = new HVOMax();
 	Persona alicia = new Persona("alicia ", 1000);
 	Persona jake = new Persona("jake",  70);
 	thisney.agrega(alicia, 2);
