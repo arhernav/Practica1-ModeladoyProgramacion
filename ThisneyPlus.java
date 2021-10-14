@@ -7,6 +7,8 @@ import java.util.ArrayList;
  */
 public class ThisneyPlus extends Servicio implements Sujeto{
 
+    /*Recomendaciones */
+    String[] recomendaciones = {"Los increibles", "Gravity falls", "Star Wars", "Los Vengadores", "¿Algo con princesas y esas cosas?"};
 
     public ThisneyPlus(){
 	this.clientesActivos = new ArrayList<Cliente>();
@@ -45,10 +47,15 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	//Para cada cliente, si puede hacer el cobro, lo realiza, si no, lo agrega a exclientes
 	for(Cliente cliente: this.clientesActivos){
 	    this.cobrar(cliente);
+	    this.recomendar();
 	}
 	for(Cliente cliente: this.exClientes){
 	    if(this.clientesActivos.contains(cliente)) this.clientesActivos.remove(cliente);
 	}
+    }
+
+    protected void recomendar(){
+	System.out.println(this.recomendaciones[1]);
     }
     
     @Override public void agrega(Persona persona, int contrato){
