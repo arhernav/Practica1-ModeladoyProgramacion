@@ -47,16 +47,14 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	//Para cada cliente, si puede hacer el cobro, lo realiza, si no, lo agrega a exclientes
 	for(Cliente cliente: this.clientesActivos){
 	    this.cobrar(cliente);
-	    this.recomendar();
+	    System.out.println(cliente.persona.nombre + " lleva usando Thisney Plus por: " + cliente.meses);
+	    
 	}
 	for(Cliente cliente: this.exClientes){
 	    if(this.clientesActivos.contains(cliente)) this.clientesActivos.remove(cliente);
 	}
     }
 
-    protected void recomendar(){
-	System.out.println(this.recomendaciones[1]);
-    }
     
     @Override public void agrega(Persona persona, int contrato){
 	if(contrato > 2 || contrato < 1){
@@ -70,8 +68,11 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	    Cliente excliente = this.exClientes.get(indice);
 	    this.exClientes.remove(excliente);
 	    this.clientesActivos.add(excliente);
+	    this.setContrato(excliente, contrato);
+	    System.out.println("Bienvenido nuevamente a Thisney Plus, ahora tu tambien eres parte de nuestras pertenencias " + persona.nombre + " y no podras volver a escapar");
 	}else{
 	    this.clientesActivos.add(clienteNuevo);
+	    System.out.println("Bienvenido a Thisney Plus" + persona.nombre + ", el servicio del monopolio menos obvio del planeta");
 	}
     }
 
@@ -89,8 +90,6 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	    System.out.println("Lamentamos que dejes el  servicio" + dadoDeBaja.persona.nombre);
 	}
     }
-
-    
     
 
     

@@ -31,13 +31,6 @@ public abstract class Servicio{
 	    this.contrato = contrato;
 	}
 	
-	/**
-	 * Establece el tipo de contrato usado
-	 * @param int Indica el tipo de contrato solicitado
-	 */
-	protected void setContrato(int i){
-	    this.contrato = i;
-	}
 
 	/**
 	 * Aumenta un mes al numero de meses
@@ -92,6 +85,12 @@ public abstract class Servicio{
     }
 
     protected abstract void cobrar(Cliente c);
+
+    protected void setContrato(Cliente c, int contrato){
+	c.contrato = contrato;
+    }
+
+    //protected abstract void realizarRecomendacion();
 
 
     

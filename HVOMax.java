@@ -18,8 +18,11 @@ public class HVOMax extends Servicio implements Sujeto{
 	    Cliente excliente = this.exClientes.get(indice);
 	    this.exClientes.remove(excliente);
 	    this.clientesActivos.add(excliente);
+	    this.setContrato(excliente, contrato);
+	    System.out.println("Bienvenido a HVO Max " + persona.nombre);
 	}else{
 	    this.clientesActivos.add(clienteNuevo);
+	    System.out.println("Bienvenido nuevamente a HVO max " + persona.nombre);
 	}
     }
 
@@ -58,6 +61,7 @@ public class HVOMax extends Servicio implements Sujeto{
 	//Para cada cliente, si puede hacer el cobro, lo realiza, si no, lo agrega a exclientes
 	for(Cliente cliente: this.clientesActivos){
 	    this.cobrar(cliente);
+	    System.out.println(cliente.persona.nombre + " lleva usando HVO Max por: " + cliente.meses);
 	}
 	for(Cliente cliente: this.exClientes){
 	    if(this.clientesActivos.contains(cliente)) this.clientesActivos.remove(cliente);
