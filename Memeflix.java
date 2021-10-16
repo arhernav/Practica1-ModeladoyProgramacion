@@ -1,9 +1,15 @@
 import java.util.ArrayList;
 public class Memeflix extends Servicio implements Sujeto{
 
+    
     public Memeflix(){
 	this.clientesActivos = new ArrayList<Cliente>();
 	this.exClientes = new ArrayList<Cliente>();
+	this.recomendaciones[0] = "rec 1";
+	this.recomendaciones[1] = "rec 2";
+	this.recomendaciones[2] = "rec 3";
+	this.recomendaciones[3] = "rec 4";
+	this.recomendaciones[4] = "rec 5";
     }
 
     @Override public void agrega(Persona persona, int contrato){
@@ -45,16 +51,16 @@ public class Memeflix extends Servicio implements Sujeto{
 	ContratoMemeflix contrato;
 	switch (cliente.contrato){
 	case 1: contrato = new Contrato1Dispositivo();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio de Memeflix para 1 dispositivo");
+	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio de Memeflix para 1 dispositivo");
 	    break;
 	case 2: contrato = new Contrato2Dispositivos();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio de Memeflix para 2 dispositivo");
+	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio de Memeflix para 2 dispositivo");
 	    break;
 	case 3: contrato = new Contrato4Dispositivos();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio de Memeflix para 4 dispositivo");
+	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio de Memeflix para 4 dispositivo");
 	    break;
 	default: contrato = new Contrato1Dispositivo();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio de Memeflix para 1 dispositivo");
+	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio de Memeflix para 1 dispositivo");
 	    break;
 	}
 	return contrato;
@@ -71,6 +77,7 @@ public class Memeflix extends Servicio implements Sujeto{
     }
 
     @Override public void notifica(){
+	this.realizarRecomendacion();
 	this.actualizaMesesClientes();
 	//Para cada cliente, si puede hacer el cobro, lo realiza, si no, lo agrega a exclientes
 	for(Cliente cliente: this.clientesActivos){

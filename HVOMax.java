@@ -1,9 +1,16 @@
 import java.util.ArrayList;
 public class HVOMax extends Servicio implements Sujeto{
 
+    String[] recomendaciones = { "Memeflix 1", "memeflix 2", "memeflix 3","memeflix 4","memeflix 5"};
+    
     public HVOMax(){
 	this.clientesActivos = new ArrayList<Cliente>();
 	this.exClientes = new ArrayList<Cliente>();
+	this.recomendaciones[0] = "";
+	this.recomendaciones[1] = "";
+	this.recomendaciones[2] = "";
+	this.recomendaciones[3] = "";
+	this.recomendaciones[4] = "";
     }
 
     @Override public void agrega(Persona persona, int contrato){
@@ -45,11 +52,11 @@ public class HVOMax extends Servicio implements Sujeto{
 	ContratoHVOMax contrato;
 	if(cliente.meses <= 3){
 	    contrato = new ContratoHVOPrueba();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por la prueba de HVO Max");
-	    return  Contrato;
+	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por la prueba de HVO Max");
+	    return contrato;
 	}
 	contrato = new ContratoHVO();
-	System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio de HVO Max");
+	System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio de HVO Max");
 	return contrato;
     }
     

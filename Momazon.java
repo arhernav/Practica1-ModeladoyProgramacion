@@ -1,9 +1,16 @@
 import java.util.ArrayList;
 public class Momazon extends Servicio implements Sujeto{
 
+    String[] recomendaciones = { "Memeflix 1", "memeflix 2", "memeflix 3","memeflix 4","memeflix 5"};
+    
     public Momazon(){
 	this.clientesActivos = new ArrayList<Cliente>();
 	this.exClientes = new ArrayList<Cliente>();
+	this.recomendaciones[0] = "";
+	this.recomendaciones[1] = "";
+	this.recomendaciones[2] = "";
+	this.recomendaciones[3] = "";
+	this.recomendaciones[4] = "";
     }
 
     @Override public void agrega(Persona persona, int contrato){
@@ -45,13 +52,13 @@ public class Momazon extends Servicio implements Sujeto{
 	ContratoMomazon contrato;
 	switch (cliente.contrato){
 	case 1: contrato = new ContratoMomazonNormal();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio normal de Momazon");
+	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio normal de Momazon");
 	    break;
 	case 2: contrato = new ContratoMomazonPremium();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio premium de Momazon ");
+	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio premium de Momazon ");
 	    break;
 	default: contrato = new ContratoMomazonNormal();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio normal de Momazon");
+	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio normal de Momazon");
 	    break;
 	}
 	return contrato;

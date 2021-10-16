@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * <p> Clase abstracta para manejar diferentes tipos de servicios<p>
@@ -60,7 +61,12 @@ public abstract class Servicio{
     
     /* Lista de clientes activos */
     ArrayList<Cliente> clientesActivos;
+    /* Lista de exclientes que se dieron de baja del  servicio */
     ArrayList<Cliente> exClientes;
+    /* Array de recomendaciones para los clientes */
+    String[] recomendaciones = new String[5];
+    /* Generador de numeros aleatorios para las recomendaciones */
+    Random random = new Random();
 
     protected void actualizaMesesClientes(){
 	if( this.clientesActivos.isEmpty() ) return;
@@ -90,7 +96,13 @@ public abstract class Servicio{
 	c.contrato = contrato;
     }
 
-    //protected abstract void realizarRecomendacion();
+    protected void realizarRecomendacion(){
+	System.out.println(this.generarRecomendacion());
+    }
+
+    protected String generarRecomendacion(){
+	return "La recomendacion para este mes es: " + this.recomendaciones[random.nextInt(5)];
+    }
 
 
     

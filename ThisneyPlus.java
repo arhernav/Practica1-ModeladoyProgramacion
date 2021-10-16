@@ -7,12 +7,14 @@ import java.util.ArrayList;
  */
 public class ThisneyPlus extends Servicio implements Sujeto{
 
-    /*Recomendaciones */
-    String[] recomendaciones = {"Los increibles", "Gravity falls", "Star Wars", "Los Vengadores", "¿Algo con princesas y esas cosas?"};
-
     public ThisneyPlus(){
 	this.clientesActivos = new ArrayList<Cliente>();
 	this.exClientes = new ArrayList<Cliente>();
+	this.recomendaciones[0] = "";
+	this.recomendaciones[1] = "";
+	this.recomendaciones[2] = "";
+	this.recomendaciones[3] = "";
+	this.recomendaciones[4] = "";
     }
 
     /**
@@ -34,10 +36,10 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	ContratoThisney contrato;
 	if(cliente.meses <= 3){
 	    contrato = new ContratoInicial();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio inical de Thiisney");
+	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio inical de Thiisney");
 	}
 	contrato = new ContratoVeterano(); 
-	System.out.println(cliente.persona.nombre + "paga: "+ contrato.getMonto + "por el servicio normal de Momazon");
+	System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio normal de Momazon");
 	return contrato;
 	
     }
