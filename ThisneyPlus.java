@@ -10,11 +10,11 @@ public class ThisneyPlus extends Servicio implements Sujeto{
     public ThisneyPlus(){
 	this.clientesActivos = new ArrayList<Cliente>();
 	this.exClientes = new ArrayList<Cliente>();
-	this.recomendaciones[0] = "";
-	this.recomendaciones[1] = "";
-	this.recomendaciones[2] = "";
-	this.recomendaciones[3] = "";
-	this.recomendaciones[4] = "";
+	this.recomendaciones[0] = "Los increibles";
+	this.recomendaciones[1] = "Lo que sea con princesas";
+	this.recomendaciones[2] = "Star Wars";
+	this.recomendaciones[3] = "Los vengadores";
+	this.recomendaciones[4] = "Frozen";
     }
 
     /**
@@ -44,13 +44,11 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	
     }
 
-    ////////////////////////////////////////////////////////////////////////////
-    /////////////////////Falta implementar parte del metodo/////////////////////
-    ////////////////////////////////////////////////////////////////////////////
     /**
      * Realiza el cobro de su contrato a todos los clientes suscritos y envia una recomendacion de pelicula/serie a cada uno de ellos
      */
     @Override public void notifica(){
+	this.realizarRecomendacion();
 	this.actualizaMesesClientes();
 	//Para cada cliente, si puede hacer el cobro, lo realiza, si no, lo agrega a exclientes
 	for(Cliente cliente: this.clientesActivos){

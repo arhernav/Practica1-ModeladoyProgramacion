@@ -1,16 +1,14 @@
 import java.util.ArrayList;
 public class Twitsh extends Servicio implements Sujeto{
-
-    String[] recomendaciones = { "Memeflix 1", "memeflix 2", "memeflix 3","memeflix 4","memeflix 5"};
     
     public Twitsh(){
 	this.clientesActivos = new ArrayList<Cliente>();
 	this.exClientes = new ArrayList<Cliente>();
-	this.recomendaciones[0] = "";
-	this.recomendaciones[1] = "";
-	this.recomendaciones[2] = "";
-	this.recomendaciones[3] = "";
-	this.recomendaciones[4] = "";
+	this.recomendaciones[0] = "Tyler1";
+	this.recomendaciones[1] = "League of legends";
+	this.recomendaciones[2] = "Michel reeeeeeeeeeeves";
+	this.recomendaciones[3] = "Amogus";
+	this.recomendaciones[4] = "Super Smash bros";
     }
 
     @Override public void agrega(Persona persona, int contrato){
@@ -75,6 +73,7 @@ public class Twitsh extends Servicio implements Sujeto{
     }
 
     @Override public void notifica(){
+	this.realizarRecomendacion();
 	this.actualizaMesesClientes();
 	//Para cada cliente, si puede hacer el cobro, lo realiza, si no, lo agrega a exclientes
 	for(Cliente cliente: this.clientesActivos){

@@ -1,16 +1,14 @@
 import java.util.ArrayList;
 public class HVOMax extends Servicio implements Sujeto{
-
-    String[] recomendaciones = { "Memeflix 1", "memeflix 2", "memeflix 3","memeflix 4","memeflix 5"};
     
     public HVOMax(){
 	this.clientesActivos = new ArrayList<Cliente>();
 	this.exClientes = new ArrayList<Cliente>();
-	this.recomendaciones[0] = "";
-	this.recomendaciones[1] = "";
-	this.recomendaciones[2] = "";
-	this.recomendaciones[3] = "";
-	this.recomendaciones[4] = "";
+	this.recomendaciones[0] = "Hora de aventura";
+	this.recomendaciones[1] = "Ben 10";
+	this.recomendaciones[2] = "Space jam";
+	this.recomendaciones[3] = "El conjuro";
+	this.recomendaciones[4] = "Hora deaventura, por favor mira hora de aventura";
     }
 
     @Override public void agrega(Persona persona, int contrato){
@@ -71,6 +69,7 @@ public class HVOMax extends Servicio implements Sujeto{
     }
 
     @Override public void notifica(){
+	this.realizarRecomendacion();
 	this.actualizaMesesClientes();
 	//Para cada cliente, si puede hacer el cobro, lo realiza, si no, lo agrega a exclientes
 	for(Cliente cliente: this.clientesActivos){

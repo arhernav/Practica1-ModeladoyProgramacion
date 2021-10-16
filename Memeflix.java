@@ -5,11 +5,11 @@ public class Memeflix extends Servicio implements Sujeto{
     public Memeflix(){
 	this.clientesActivos = new ArrayList<Cliente>();
 	this.exClientes = new ArrayList<Cliente>();
-	this.recomendaciones[0] = "rec 1";
-	this.recomendaciones[1] = "rec 2";
-	this.recomendaciones[2] = "rec 3";
-	this.recomendaciones[3] = "rec 4";
-	this.recomendaciones[4] = "rec 5";
+	this.recomendaciones[0] = "El juego del pulpo";
+	this.recomendaciones[1] = "Los juegos del hambre";
+	this.recomendaciones[2] = "El señor de los anillos";
+	this.recomendaciones[3] = "El stand de los besos";
+	this.recomendaciones[4] = "Orgullo y prejuicio";
     }
 
     @Override public void agrega(Persona persona, int contrato){
