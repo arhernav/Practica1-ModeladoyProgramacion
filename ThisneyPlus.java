@@ -2,11 +2,14 @@ import java.util.ArrayList;
 
 /**
  * Clase que provee el servicio Thisney+
- * 
- * Extiende de Servicio e implementa Sujeto
+ * <p>
+ * Implementa la  interfaz <code>sujeto<code> y extiende de la superclase <code>Servicio<code> 
  */
 public class ThisneyPlus extends Servicio implements Sujeto{
 
+    /**
+     * Constructor de la clase
+     */
     public ThisneyPlus(){
 	this.clientesActivos = new ArrayList<Cliente>();
 	this.exClientes = new ArrayList<Cliente>();
@@ -32,6 +35,13 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	}	
     }
 
+    /**
+     * Checa el tipo de contrato de un cliente dado y devuelve un objeto de alguna clase que immplemente la interfaz <code>ContratoThisney<code>
+     * Envia un mensaje notificando al cliente del tipo de contrato que tiene
+     * Ya que Thisney cobra en base al numero de meses, Thisney no utiliza el atributo <code>contrato<code> del cliente
+     * @param Cliente Cliente del cual se checa el contrato
+     * @return ContratoThisney Objeto de alguna clase que implemente la interfaz <code>ContratoThisney<code>
+     */
     protected ContratoThisney checarContrato(Cliente cliente){
 	ContratoThisney contrato;
 	if(cliente.meses <= 3){
@@ -45,7 +55,10 @@ public class ThisneyPlus extends Servicio implements Sujeto{
     }
 
     /**
-     * Realiza el cobro de su contrato a todos los clientes suscritos y envia una recomendacion de pelicula/serie a cada uno de ellos
+     * Metodo que envia notificacion a todos los observadores
+     * La notificacion constiste de una recomendacion general para todos los clientes, una actualizacion del numero de meses de suscripcion de cada cliente y 
+     * el cobro del monto especifico para cada cliente
+     * Si un cliente no es capaz de pagar, este es dado de baja del servicio y notificado de esto
      */
     @Override public void notifica(){
 	this.realizarRecomendacion();
@@ -61,7 +74,12 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	}
     }
 
-    
+    /**
+     * Agrega a una persona a la lista de clientes activos. 
+     * Si la persona ya habia sido inscrita y se dio de baja, saca a la persona de exclientes y continua con su informacion previa
+     * @param Persona Persona a agregar al servicio
+     * @param int Entero que maneja el tipo de contrato que la persona solicita
+     */
     @Override public void agrega(Persona persona, int contrato){
 	if(contrato > 2 || contrato < 1){
 	    System.out.println("Numero de contrato invalido Thisney");
@@ -82,6 +100,10 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	}
     }
 
+    /**
+     * Da de baja del servicio a la persona
+     * @param Persona Persona a dar de baja del  servicio
+     */
     @Override public void remueve(Persona persona){
 	Cliente dadoDeBaja = null;
 	for(Cliente cliente : this.clientesActivos){

@@ -1,8 +1,6 @@
-import java.util.ArrayList;
-
 /**
  * Clase que modela una persona
- * 
+ * <p>
  * Tiene cuenta de banco y una lista de suscripciones
  */
 public class Persona{
@@ -11,8 +9,6 @@ public class Persona{
     String nombre;
     /* CuentaBanco Maneja el dinero*/
     CuentaBanco cuenta;
-    /* Lista de suscripciones*/
-    ArrayList<Servicio> suscripciones;
 
     /**
      * Crea un objeto de la clase persona
@@ -22,24 +18,6 @@ public class Persona{
     public Persona(String nombre, int dineroInicial){
 	this.nombre = nombre;
 	this.cuenta = new CuentaBanco(dineroInicial);
-	this.suscripciones = new ArrayList<Servicio>();
-    }
-
-    /**
-     * Agraga una suscripcion
-     * @param Servicio Objeto que herede de la clase abstracta servicio
-     */
-    protected void suscripcionNueva(Servicio s){
-	this.suscripciones.add(s);
-    }
-
-    /**
-     * Cancela una suscripcion
-     * @param Servicio Objeto que herede de la clase abstracta Servicio
-     */
-    protected void cancelarSuscripcion(Servicio s){
-	if(this.suscripciones.contains(s) ) this.suscripciones.remove(s);
-	return;
     }
 
     /**

@@ -96,7 +96,7 @@ public abstract class Servicio{
     /**
      * Imprime la lista de clientes activos
      */
-    private void mostrarClientesActivos(){
+    public void mostrarClientesActivos(){
 	System.out.println(this.clientesActivos);
     }
 
