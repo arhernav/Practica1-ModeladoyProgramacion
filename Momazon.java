@@ -42,7 +42,7 @@ public class Momazon extends Servicio implements Sujeto{
 	if(dadoDeBaja != null){
 	    this.clientesActivos.remove(dadoDeBaja);
 	    this.exClientes.add(dadoDeBaja);
-	    System.out.println("Lamentamos que dejes el  servicio" + dadoDeBaja.persona.nombre);
+	    System.out.println("Lamentamos que dejes el  servicio de Momazon Prime " + dadoDeBaja.persona.nombre);
 	}
     }
 
@@ -50,13 +50,13 @@ public class Momazon extends Servicio implements Sujeto{
 	ContratoMomazon contrato;
 	switch (cliente.contrato){
 	case 1: contrato = new ContratoMomazonNormal();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio normal de Momazon");
+	    System.out.println(cliente.persona.nombre + " paga: "+ contrato.conocerMonto() + " por el servicio normal de Momazon");
 	    break;
 	case 2: contrato = new ContratoMomazonPremium();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio premium de Momazon ");
+	    System.out.println(cliente.persona.nombre + " paga: "+ contrato.conocerMonto() + " por el servicio premium de Momazon ");
 	    break;
 	default: contrato = new ContratoMomazonNormal();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio normal de Momazon");
+	    System.out.println(cliente.persona.nombre + " paga: "+ contrato.conocerMonto() + " por el servicio normal de Momazon");
 	    break;
 	}
 	return contrato;
@@ -66,7 +66,7 @@ public class Momazon extends Servicio implements Sujeto{
 	ContratoMomazon contrato = this.checarContrato(cliente);
 	if(cliente.persona.cuenta.dinero - contrato.conocerMonto() < 0){
 	    this.exClientes.add(cliente);
-	    System.out.println("Lamentamos que hayas dejado  el serivicio, pobre: " + cliente.persona.nombre);
+	    System.out.println("Lamentamos que hayas dejado  el serivicio de Momazon por no poder pagarlo: " + cliente.persona.nombre);
 	}else{
 	    contrato.realizarCobro(cliente.persona);
 	}

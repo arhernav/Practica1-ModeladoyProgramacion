@@ -42,7 +42,7 @@ public class Twitsh extends Servicio implements Sujeto{
 	if(dadoDeBaja != null){
 	    this.clientesActivos.remove(dadoDeBaja);
 	    this.exClientes.add(dadoDeBaja);
-	    System.out.println("Lamentamos que dejes el  servicio" + dadoDeBaja.persona.nombre);
+	    System.out.println("Lamentamos que dejes el  servicio de Twitsh " + dadoDeBaja.persona.nombre);
 	}
     }
     
@@ -50,13 +50,13 @@ public class Twitsh extends Servicio implements Sujeto{
 	ContratoTwitsh contrato;
 	switch (cliente.contrato){
 	case 1: contrato = new ContratoTwitshNormal();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio de Twitsh");
+	    System.out.println(cliente.persona.nombre + " paga: "+ contrato.conocerMonto() + " por el servicio de Twitsh");
 	    break;
 	case 2: contrato = new ContratoTwitshPremium();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio premium de Twitsh");
+	    System.out.println(cliente.persona.nombre + " paga: "+ contrato.conocerMonto() + " por el servicio premium de Twitsh");
 	    break;
 	default: contrato = new ContratoTwitshPremium();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio premium de Twitsh");
+	    System.out.println(cliente.persona.nombre + " paga: "+ contrato.conocerMonto() + " por el servicio premium de Twitsh");
 	    break;
 	}
 	return contrato;
@@ -66,7 +66,7 @@ public class Twitsh extends Servicio implements Sujeto{
 	ContratoTwitsh contrato = this.checarContrato(cliente);
 	if(cliente.persona.cuenta.dinero - contrato.conocerMonto() < 0){
 	    this.exClientes.add(cliente);
-	    System.out.println("Lamentamos que hayas dejado  el serivicio, pobre: " + cliente.persona.nombre);
+	    System.out.println("Lamentamos que hayas dejado  el serivicio de twitsh por no poder pagarlo: " + cliente.persona.nombre);
 	}else{
 	    contrato.realizarCobro(cliente.persona);
 	}

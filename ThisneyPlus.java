@@ -29,7 +29,7 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	ContratoThisney contrato = this.checarContrato(cliente);
 	if(cliente.persona.cuenta.dinero - contrato.conocerMonto() < 0){
 	    this.exClientes.add(cliente);
-	    System.out.println("Lamentamos que hayas dejado  el serivicio, pobre: " + cliente.persona.nombre);
+	    System.out.println("Lamentamos que hayas dejado  el serivicio de Thisney por no poder pagarlo: " + cliente.persona.nombre);
 	}else{
 	    contrato.realizarCobro(cliente.persona);
 	}	
@@ -46,10 +46,11 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	ContratoThisney contrato;
 	if(cliente.meses <= 3){
 	    contrato = new ContratoInicial();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio inical de Thiisney");
+	    System.out.println(cliente.persona.nombre + " paga: "+ contrato.conocerMonto() + " por el servicio inical de Thisney");
+	    return contrato;
 	}
 	contrato = new ContratoVeterano(); 
-	System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio normal de Momazon");
+	System.out.println(cliente.persona.nombre + " paga: "+ contrato.conocerMonto() + " por el servicio normal de Momazon");
 	return contrato;
 	
     }
@@ -96,7 +97,7 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	    System.out.println("Bienvenido nuevamente a Thisney Plus, ahora tu tambien eres parte de nuestras pertenencias " + persona.nombre + " y no podras volver a escapar");
 	}else{
 	    this.clientesActivos.add(clienteNuevo);
-	    System.out.println("Bienvenido a Thisney Plus" + persona.nombre + ", el servicio del monopolio menos obvio del planeta");
+	    System.out.println("Bienvenido a Thisney Plus " + persona.nombre + ", el servicio del monopolio menos obvio del planeta");
 	}
     }
 
@@ -115,7 +116,7 @@ public class ThisneyPlus extends Servicio implements Sujeto{
 	if(dadoDeBaja != null){
 	    this.clientesActivos.remove(dadoDeBaja);
 	    this.exClientes.add(dadoDeBaja);
-	    System.out.println("Lamentamos que dejes el  servicio" + dadoDeBaja.persona.nombre);
+	    System.out.println("Lamentamos que dejes el servicio de Thisney " + dadoDeBaja.persona.nombre);
 	}
     }
     

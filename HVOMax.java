@@ -24,10 +24,10 @@ public class HVOMax extends Servicio implements Sujeto{
 	    this.exClientes.remove(excliente);
 	    this.clientesActivos.add(excliente);
 	    this.setContrato(excliente, contrato);
-	    System.out.println("Bienvenido a HVO Max " + persona.nombre);
+	    System.out.println("Bienvenido nuevamente a HVO Max " + persona.nombre);
 	}else{
 	    this.clientesActivos.add(clienteNuevo);
-	    System.out.println("Bienvenido nuevamente a HVO max " + persona.nombre);
+	    System.out.println("Bienvenido a HVO Max " + persona.nombre);
 	}
     }
 
@@ -42,7 +42,7 @@ public class HVOMax extends Servicio implements Sujeto{
 	if(dadoDeBaja != null){
 	    this.clientesActivos.remove(dadoDeBaja);
 	    this.exClientes.add(dadoDeBaja);
-	    System.out.println("Lamentamos que dejes el  servicio" + dadoDeBaja.persona.nombre);
+	    System.out.println("Lamentamos que dejes el  servicio de HVO Max " + dadoDeBaja.persona.nombre);
 	}
     }
     
@@ -50,11 +50,11 @@ public class HVOMax extends Servicio implements Sujeto{
 	ContratoHVOMax contrato;
 	if(cliente.meses <= 3){
 	    contrato = new ContratoHVOPrueba();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por la prueba de HVO Max");
+	    System.out.println(cliente.persona.nombre + " paga: "+ contrato.conocerMonto() + " por la prueba de HVO Max");
 	    return contrato;
 	}
 	contrato = new ContratoHVO();
-	System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio de HVO Max");
+	System.out.println(cliente.persona.nombre + " paga: "+ contrato.conocerMonto() + " por el servicio de HVO Max");
 	return contrato;
     }
     
@@ -62,7 +62,7 @@ public class HVOMax extends Servicio implements Sujeto{
 	ContratoHVOMax contrato = this.checarContrato(cliente);
 	if(cliente.persona.cuenta.dinero - contrato.conocerMonto() < 0){
 	    this.exClientes.add(cliente);
-	    System.out.println("Lamentamos que hayas dejado  el serivicio, pobre: " + cliente.persona.nombre);
+	    System.out.println("Lamentamos que hayas dejado  el serivicio de HVO Max por no poder pagarlo: " + cliente.persona.nombre);
 	}else{
 	    contrato.realizarCobro(cliente.persona);
 	}

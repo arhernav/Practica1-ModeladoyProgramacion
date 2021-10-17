@@ -118,7 +118,10 @@ public abstract class Servicio{
      * @param int Tipo de contrato asignado al cliente
      */
     protected void setContrato(Cliente c, int contrato){
+	if(c.contrato  == contrato)return;
 	c.contrato = contrato;
+	System.out.println(c.persona.nombre + " ha cambiado su contrato");
+	
     }
     /**
      * Imprime una recomendacion realizada con el metodo generarRecomendacion()

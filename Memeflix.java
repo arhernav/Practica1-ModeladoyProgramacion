@@ -42,7 +42,7 @@ public class Memeflix extends Servicio implements Sujeto{
 	    System.out.println("Bienvenido nuevamente a Memeflix " + persona.nombre);
 	}else{
 	    this.clientesActivos.add(clienteNuevo);
-	    System.out.println("Bienvenido a memeflix " + persona.nombre);
+	    System.out.println("Bienvenido a Memeflix " + persona.nombre);
 	}
     }
 
@@ -61,7 +61,7 @@ public class Memeflix extends Servicio implements Sujeto{
 	if(dadoDeBaja != null){
 	    this.clientesActivos.remove(dadoDeBaja);
 	    this.exClientes.add(dadoDeBaja);
-	    System.out.println("Lamentamos que dejes el  servicio" + dadoDeBaja.persona.nombre);
+	    System.out.println("Lamentamos que dejes el  servicio de memeflix " + dadoDeBaja.persona.nombre);
 	}
     }
 
@@ -75,16 +75,16 @@ public class Memeflix extends Servicio implements Sujeto{
 	ContratoMemeflix contrato;
 	switch (cliente.contrato){
 	case 1: contrato = new Contrato1Dispositivo();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio de Memeflix para 1 dispositivo");
+	    System.out.println(cliente.persona.nombre + " paga: "+ contrato.conocerMonto() + " por el servicio de Memeflix para 1 dispositivo");
 	    break;
 	case 2: contrato = new Contrato2Dispositivos();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio de Memeflix para 2 dispositivo");
+	    System.out.println(cliente.persona.nombre + " paga: "+ contrato.conocerMonto() + " por el servicio de Memeflix para 2 dispositivo");
 	    break;
 	case 3: contrato = new Contrato4Dispositivos();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio de Memeflix para 4 dispositivo");
+	    System.out.println(cliente.persona.nombre + " paga: "+ contrato.conocerMonto() + " por el servicio de Memeflix para 4 dispositivo");
 	    break;
 	default: contrato = new Contrato1Dispositivo();
-	    System.out.println(cliente.persona.nombre + "paga: "+ contrato.conocerMonto() + "por el servicio de Memeflix para 1 dispositivo");
+	    System.out.println(cliente.persona.nombre + " paga: "+ contrato.conocerMonto() + " por el servicio de Memeflix para 1 dispositivo");
 	    break;
 	}
 	return contrato;
@@ -94,11 +94,11 @@ public class Memeflix extends Servicio implements Sujeto{
      * Metodo auxiliar que checa el contrato del cliente dado y le hace un cobro acorde a este
      * @param Cliente Cliente del cual se checa el contrato y al cual se le cobra
      */
-    @Override private void cobrar(Cliente cliente){
+    @Override protected void cobrar(Cliente cliente){
 	ContratoMemeflix contrato = this.checarContrato(cliente);
 	if(cliente.persona.cuenta.dinero - contrato.conocerMonto() < 0){
 	    this.exClientes.add(cliente);
-	    System.out.println("Lamentamos que hayas dejado  el serivicio de memeflix, pobre: " + cliente.persona.nombre);
+	    System.out.println("Lamentamos que hayas dejado  el serivicio de memeflix por no poder pagarlo: " + cliente.persona.nombre);
 	}else{
 	    contrato.realizarCobro(cliente.persona);
 	}
