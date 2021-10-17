@@ -1,6 +1,13 @@
 import java.util.ArrayList;
+
+/**
+ * Clase para Momazon Prime Video
+ */
 public class Momazon extends Servicio implements Sujeto{
-    
+
+    /**
+     * Constructor de la clase
+     */
     public Momazon(){
 	this.clientesActivos = new ArrayList<Cliente>();
 	this.exClientes = new ArrayList<Cliente>();
@@ -11,6 +18,12 @@ public class Momazon extends Servicio implements Sujeto{
 	this.recomendaciones[4] = "Star trek";
     }
 
+    /**
+     * Agrega a una persona al servicio
+     * Si la persona ya se habia dado de alta en el serviocio, se pasa de exclientes a clientes y  se continua con su informacion previa
+     * @param Persona Persona a dar de alta en el servicio
+     * @param int Contrato que el cliente esta solicitando
+     */
     @Override public void agrega(Persona persona, int contrato){
 	if(contrato > 2 || contrato < 1){
 	    System.out.println("Numero de contrato invalido Momazon");
@@ -31,6 +44,11 @@ public class Momazon extends Servicio implements Sujeto{
 	}
     }
 
+    /**
+     * Da de baja del servicio a la persona en cuestion
+     * Si la persona no esta dada de alta en el servicio, el metodo no hace nada
+     * @param Persona Persona a la que se da de baja del servicio
+     */
     @Override public void remueve(Persona persona){
 	Cliente dadoDeBaja = null;
 	for(Cliente cliente : this.clientesActivos){
@@ -46,6 +64,12 @@ public class Momazon extends Servicio implements Sujeto{
 	}
     }
 
+    /**
+     * Checa el tipo de contrato que el cliente tiene contratado y devuelve un objeto adecuado que implemente de ContratoMomazon
+     * Al definir el tipo de contrato que la persona tiene contratado, este metodo envia un mensaje para recordar a la persona el contrato y su precio
+     * @param Cliente Cliente del cual se checa el contrato y al cual se le informa su tipo de contrato
+     * @return ContratoMomazon Objeto de alguna clase que implemente ContratoMomazon y defina el tipo de contrato del cliente
+     */
     protected ContratoMomazon checarContrato(Cliente cliente){
 	ContratoMomazon contrato;
 	switch (cliente.contrato){
@@ -62,6 +86,10 @@ public class Momazon extends Servicio implements Sujeto{
 	return contrato;
     }
 
+    /**
+     * Metodo auxiliar que checa el contrato del cliente dado y le hace un cobro acorde a este
+     * @param Cliente Cliente del cual se checa el contrato y al cual se le cobra
+     */
     @Override protected void cobrar(Cliente cliente){
 	ContratoMomazon contrato = this.checarContrato(cliente);
 	if(cliente.persona.cuenta.dinero - contrato.conocerMonto() < 0){
@@ -71,7 +99,13 @@ public class Momazon extends Servicio implements Sujeto{
 	    contrato.realizarCobro(cliente.persona);
 	}
     }
-    
+
+    /**
+     * Genera y anuncia una recomendacion generalizada para todos los clientes
+     * Actualiza los meses de suscripcion de todos los clintes
+     * Realiza el cobro adecuado a todos los clientes
+     * Da de baja a los clientes que no puedan pagar
+     */
     @Override public void notifica(){
 	this.realizarRecomendacion();
 	this.actualizaMesesClientes();

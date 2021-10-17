@@ -1,6 +1,15 @@
 import java.util.ArrayList;
+
+/**
+ * Clase para Twitsh
+ * <p>
+ * Extiende de servicio e implementa sujeto
+ */
 public class Twitsh extends Servicio implements Sujeto{
-    
+
+    /**
+     * Constructor de la clase
+     */
     public Twitsh(){
 	this.clientesActivos = new ArrayList<Cliente>();
 	this.exClientes = new ArrayList<Cliente>();
@@ -11,6 +20,13 @@ public class Twitsh extends Servicio implements Sujeto{
 	this.recomendaciones[4] = "Super Smash bros";
     }
 
+    /**
+     * Da de alta a una persona en el servicio
+     * Si la persona ya habia estado suscrita en el servicio, actualiza su contrato y continua con su informacion previa
+     * Si la persona ya esta dada de alta, el metodo no hace nada
+     * @param Persona Persona a dar de alta en el servicio
+     * @param int Contrato que la persona solicita
+     */
     @Override public void agrega(Persona persona, int contrato){
 	if(contrato > 2 || contrato < 1){
 	    System.out.println("Numero de contrato invalido Twitsh");
@@ -31,6 +47,10 @@ public class Twitsh extends Servicio implements Sujeto{
 	}
     }
 
+    /**
+     * Da de baja del servicio a la persona en cuestion
+     * @param Persona persona a la que se da de baja
+     */
     @Override public void remueve(Persona persona){
 	Cliente dadoDeBaja = null;
 	for(Cliente cliente : this.clientesActivos){
@@ -45,7 +65,13 @@ public class Twitsh extends Servicio implements Sujeto{
 	    System.out.println("Lamentamos que dejes el  servicio de Twitsh " + dadoDeBaja.persona.nombre);
 	}
     }
-    
+
+    /**
+     * Checa el contrato de la persona en cuestio para saber la  manera adecuada  de cobrarle
+     * @param Cliente Cliente del cual se checa el contrato
+     * @return Objeto de alguna clase que herede de ContratoTwitsh
+     */
+
     protected ContratoTwitsh checarContrato(Cliente cliente){
 	ContratoTwitsh contrato;
 	switch (cliente.contrato){
@@ -61,7 +87,12 @@ public class Twitsh extends Servicio implements Sujeto{
 	}
 	return contrato;
     }
-    
+
+    /**
+     * Cobra al cliente en cuestion  segun  su tipo de contrato
+     * Si el cliente no es capaz de pagar, este es agregado a los exclientes
+     * @param Cliente cliente al  cual se le cobra
+     */
     @Override protected void cobrar(Cliente cliente){
 	ContratoTwitsh contrato = this.checarContrato(cliente);
 	if(cliente.persona.cuenta.dinero - contrato.conocerMonto() < 0){
@@ -72,6 +103,12 @@ public class Twitsh extends Servicio implements Sujeto{
 	}
     }
 
+    /**
+     * Genera y anuncia una recomendacion generalizada para todos los clientes
+     * Actualiza los meses de suscripcion de todos los clintes
+     * Realiza el cobro adecuado a todos los clientes
+     * Da de baja a los clientes que no puedan pagar
+     */
     @Override public void notifica(){
 	this.realizarRecomendacion();
 	this.actualizaMesesClientes();

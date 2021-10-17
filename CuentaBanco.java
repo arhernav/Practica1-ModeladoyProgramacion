@@ -25,6 +25,10 @@ public class CuentaBanco{
 	}
     }
 
+    /**
+     * Devuelve la cantidad de dinero de la cuenta
+     * @return  int Cantidad de dinero de la cuenta
+     */
     public int getDinero(){
 	return this.dinero;
     }
